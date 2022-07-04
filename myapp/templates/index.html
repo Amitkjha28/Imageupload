@@ -14,11 +14,23 @@
   <div class="container">
       <div class=" py-5 bg-warning text-dark text-center">
           <h2 class="mb-5">IMAGE UPLOAD</h2>
-          <form action="" method="post">
+          <form action="" method="post" enctype="multipart/form-data">
               {% csrf_token %}
               {{ fm }}
               <input type="submit" class="btn btn-primary" value="Upload">
           </form>
+      </div><br>
+      <div class="row">
+      {% for i in pic %}
+          <div class="col-sm-4">
+              <div class="card m-2">
+                <img src="{{ i.Image.url   }}" height="300px"  >
+                  <div class="card-footer">
+                  <small>{{ i.Date }}</small>
+                  </div>
+              </div>
+          </div>
+     {% endfor %}
       </div>
   </div>
 

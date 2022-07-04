@@ -6,5 +6,10 @@ from .models import Image
 # Create your views here.
 
 def index(request):
+    if request.method =="POST":
+        form = myform(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
     form = myform()
-    return render(request,"index.html",{'fm':form})
+    pic = Image.objects.all()
+    return render(request,"index.html",{'fm':form,'pic':pic})
